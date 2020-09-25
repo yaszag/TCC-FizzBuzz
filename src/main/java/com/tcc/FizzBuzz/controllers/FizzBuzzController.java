@@ -15,12 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tcc.FizzBuzz.entity.FizzBuzz;
 import com.tcc.FizzBuzz.services.FizzBuzzService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 
 
 @RestController
 @RequestMapping(value = "/api/FizzBuzz/")
 
-
+@Api(value = "FizzBuzz System")
 public class FizzBuzzController {
 	
 	 private FizzBuzzService fizzBuzzService;
@@ -33,7 +36,7 @@ public class FizzBuzzController {
 	    }
 
 	    //Returns the Last FizzBuzz result.
-	    
+	    @ApiOperation(value = "Get FizzBuzz")
 	    @GetMapping(value = "{number}", produces = MediaType.APPLICATION_JSON_VALUE)
 	    public ResponseEntity<FizzBuzz> getStream(@PathVariable(value = "number") final int number) {
 	        final FizzBuzz fizzBuzz = new FizzBuzz();
